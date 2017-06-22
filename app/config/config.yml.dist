@@ -1,0 +1,8 @@
+ jira:
+    server_endpoint: https://myjiraserver.com
+    username: foo
+    password: bar
+  worklogs:
+    office_hours:
+      start: 08
+      end: 18
