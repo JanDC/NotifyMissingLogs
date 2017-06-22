@@ -32,7 +32,7 @@ class NotificationCommand extends Command
         $jiraQueries = new JiraQueries($login, $configuration['worklogs']);
 
         $result = $jiraQueries->validateLogs();
-        $output->writeln(json_encode($result));
+        $output->writeln(json_encode($result,JSON_PRETTY_PRINT));
     }
 
 }
