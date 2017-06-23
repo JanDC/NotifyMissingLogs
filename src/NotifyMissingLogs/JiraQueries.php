@@ -65,7 +65,8 @@ class JiraQueries
 
         $minutes = (60 * $remainder->format('H')) + intval($remainder->format('i'));
 
-        return $minutes;
+        $ceil = ($this->officehours['end'] - $this->officehours['start']) * 60;
+        return min($minutes, $ceil);
     }
 
     /**
