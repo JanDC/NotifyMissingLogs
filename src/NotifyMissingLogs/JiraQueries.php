@@ -57,6 +57,11 @@ class JiraQueries
         $interval = new \DateInterval("PT{$this->officehours['start']}H");
 
         $remainder = $now->sub($interval);
+        $now = new DateTime();
+
+        if ($remainder->format('d') !== $now->format('d')) {
+            return 0;
+        }
 
         $minutes = (60 * $remainder->format('H')) + intval($remainder->format('i'));
 
