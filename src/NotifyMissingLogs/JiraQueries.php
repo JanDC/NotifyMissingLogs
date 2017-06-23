@@ -85,7 +85,8 @@ class JiraQueries
             /** @var Issue $issue */
             $worklogs = $this->getApi()->getWorklogs($issue->getKey(), [])->getResult();
             foreach ($worklogs['worklogs'] as $worklog) {
-                if ($worklog['updateAuthor']['name'] !== $this->getUser()) {
+
+                if ($worklog['updateAuthor']['name'] !== $this->getUser() || strpos($worklog['created'],$now->format('Y-m-d')) !== 0) {
                     continue;
                 }
                 $sum += intval($worklog['timeSpentSeconds'] / 60);
